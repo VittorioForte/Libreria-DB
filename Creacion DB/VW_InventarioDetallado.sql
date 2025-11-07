@@ -5,7 +5,7 @@ CREATE VIEW VW_InventarioDetallado AS
 SELECT
     l.ID_Libro,
     l.Titulo,
-    /*a.Nombre_Autor + ' ' + a.Apellido AS Autor,*/
+    a.Nombre_Autor AS Autor,
     c.Nombre_Categoria AS Categoria,
     l.Stock_Total,
     l.Stock_Disponible,
