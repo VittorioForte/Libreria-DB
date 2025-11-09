@@ -8,10 +8,7 @@ CREATE PROCEDURE SP_RegistrarPrestamo
 AS
 BEGIN
     SET NOCOUNT ON;
-
     BEGIN TRY
-        
-        -- --- VALIDACIONES (Reglas de Negocio) ---
 
         -- 1. Validar que el estudiante exista
         IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE ID_Estudiante = @ID_Estudiante)
@@ -37,20 +34,19 @@ BEGIN
             RETURN;
         END
 
-        -- 4. Validar que el estudiante no tenga préstamos vencidos
-        --    (CORRECCIÓN: Consultamos la tabla Prestamos directamente)
+        -- 4. Validar que el estudiante no tenga prÃ©stamos vencidos
         IF EXISTS (SELECT 1 FROM Prestamos 
                    WHERE ID_Estudiante = @ID_Estudiante 
-                   AND Fecha_Entrada IS NULL -- Préstamo activo
+                   AND Fecha_Entrada IS NULL -- PrÃ©stamo activo
                    AND Fecha_Devolucion_Prevista < GETDATE()) -- Vencido
         BEGIN
-            RAISERROR('Error: El estudiante tiene préstamos vencidos. No puede retirar nuevos libros.', 16, 1);
+            RAISERROR('Error: El estudiante tiene prÃ©stamos vencidos. No puede retirar nuevos libros.', 16, 1);
             RETURN;
         END
 
         -- --- FIN VALIDACIONES ---
 
-        -- 5. Si todo está OK, registrar el préstamo
+        -- 5. Si todo estÃ¡ OK, registrar el prÃ©stamo
         INSERT INTO Prestamos (
             ID_Libro,
             ID_Estudiante,
@@ -66,11 +62,12 @@ BEGIN
             NULL 
         );
 
-        PRINT 'Préstamo registrado exitosamente.';
+        PRINT 'PrÃ©stamo registrado exitosamente.';
         
     END TRY
     BEGIN CATCH
         PRINT 'Ha ocurrido un error inesperado: ' + ERROR_MESSAGE();
     END CATCH
 END;
+
 GO
