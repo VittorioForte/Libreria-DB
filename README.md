@@ -2,6 +2,8 @@
 
 Este proyecto consiste en el desarrollo de una Base de Datos para la gestión integral de una biblioteca, enfocada en el registro y control de préstamos, devoluciones y stock de libros en tiempo real.
 
+https://docs.google.com/document/d/1gtdBc5Y-jxiPNj3X1sFqBVx_roGeIykbJkQrvBdESZ0/edit?usp=sharing
+
  ## 🧠 Contexto Académico
 
 Este sistema fue desarrollado en el marco de la materia Base de Datos II (Año 2025) perteneciente a la Tecnicatura Universitaria en Programación – UTN FRGP.
