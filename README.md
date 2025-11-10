@@ -49,7 +49,11 @@ PRÉSTAMOS → (IDLibro, IDEstudiante, FechaSalida, FechaDevoluciónPrevista, Fe
 
 ## 👁️‍🗨️ Vistas
 
-(Espacio para detallar las vistas creadas)
+### Vista 1: Esta vista tiene como objetivo principal generar un listado en tiempo real de todos los libros que están actualmente en manos de los estudiantes y aún no han sido devueltos a la biblioteca.
+
+### Vista 2: Esta vista muestra el historial completo de préstamos y devoluciones de cada usuario, útil para generar reportes sobre la frecuencia de uso del servicio.
+
+### Vista 3: Esta vista es el reporte más complejo y completo de la lista, ya que demuestra la ventaja de la normalización: junta información de cuatro tablas para dar una visión total del inventario.
 
 ## ⚙️ Procedimientos Almacenados
 
