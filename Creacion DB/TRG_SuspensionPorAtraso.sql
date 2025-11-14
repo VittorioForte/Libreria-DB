@@ -1,4 +1,10 @@
 
+ALTER TABLE Sanciones
+ADD Fecha_InicioSuspension DATE NULL,
+    Fecha_FinSuspension DATE NULL;
+GO
+
+
 CREATE TRIGGER trg_SuspensionPorAtraso
 ON Prestamos
 AFTER UPDATE
