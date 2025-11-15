@@ -32,20 +32,3 @@ BEGIN
 END;
 GO
 
--- Pruebas de los triggers
-
---EXEC SP_RegistrarPrestamo
---    @ID_Libro = 4,
---    @ID_Estudiante = 21,
---    @DiasDePrestamo = 15;
---GO
-
---EXEC SP_RegistrarDevolucion
---    @ID_Prestamo = 1004;
---GO
-
-
---SELECT ID_Libro, Titulo, Stock_Disponible
---FROM Libros
---GO
-
