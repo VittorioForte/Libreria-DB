@@ -36,16 +36,3 @@ BEGIN
         AND i.Fecha_Entrada > i.Fecha_Devolucion_Prevista; 
 END;
 GO
-
--- Prueba del trigger
-
---EXEC SP_RegistrarPrestamo 17, 1;
-
---UPDATE Prestamos
---SET Fecha_Devolucion_Prevista = '2024-06-01'
---WHERE ID_Prestamo = (SELECT MAX(ID_Prestamo) FROM Prestamos);
-
---EXEC SP_RegistrarDevolucion
---    @ID_Prestamo = 1005;
---GO
-
