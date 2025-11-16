@@ -18,14 +18,14 @@ BEGIN
         -- 1. Validar que el estudiante exista
         IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE ID_Estudiante = @ID_Estudiante)
         BEGIN
-            RAISERROR('Error: El ID_Estudiante %d no existe.', 16, 1, @ID_Estudiante);
+            RAISERROR('Error: El ID_Estudiante id no existe.', 16, 1, @ID_Estudiante);
             RETURN;
         END
 
         -- 2. Validar que el libro exista
         IF NOT EXISTS (SELECT 1 FROM Libros WHERE ID_Libro = @ID_Libro)
         BEGIN
-            RAISERROR('Error: El ID_Libro %d no existe.', 16, 1, @ID_Libro);
+            RAISERROR('Error: El ID_Libro id no existe.', 16, 1, @ID_Libro);
             RETURN;
         END
 
@@ -35,7 +35,7 @@ BEGIN
         
         IF (@StockActual <= 0)
         BEGIN
-            RAISERROR('Error: No hay stock disponible para el libro ID %d.', 16, 1, @ID_Libro);
+            RAISERROR('Error: No hay stock disponible para el libro ID.', 16, 1, @ID_Libro);
             RETURN;
         END
 
@@ -50,6 +50,23 @@ BEGIN
         END
 
         -- --- FIN VALIDACIONES ---
+
+        --- --- IF TIENE UNA SUSPENSION ACTIVA, NO DEJA HACER PRESTAMO --- ---
+
+                IF EXISTS (
+            SELECT 1
+            FROM Sanciones
+            WHERE ID_Prestamo IN (
+                SELECT ID_Prestamo 
+                FROM Prestamos 
+                WHERE ID_Estudiante = @ID_Estudiante
+            )
+            AND Fecha_FinSuspension >= CAST(GETDATE() AS DATE)
+        )
+        BEGIN
+            RAISERROR('Error: El estudiante está suspendido y no puede retirar libros.', 16, 1);
+            RETURN;
+        END
 
         -- 5. Si todo está OK, registrar el préstamo
         INSERT INTO Prestamos (
