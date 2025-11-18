@@ -270,8 +270,6 @@ Registra automáticamente los cambios realizados sobre los libros, manteniendo u
   - Título
   - Stock disponible
 
-Esto permite auditar cambios críticos en el catálogo de la biblioteca. :contentReference[oaicite:10]{index=10}
-
 ## 🧮 Lógica de Negocio
 
 Automatización de stock: Cada préstamo o devolución actualiza el inventario sin intervención manual.
