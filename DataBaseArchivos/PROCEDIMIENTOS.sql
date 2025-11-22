@@ -181,7 +181,7 @@ BEGIN
             RETURN;
         END
 
-        -- --- FIN VALIDACIONS ---
+        -- --- FIN VALIDACIONES ---
 
         DECLARE @FechaPrevista DATE;
         SELECT @FechaPrevista = Fecha_Devolucion_Prevista 
@@ -196,9 +196,6 @@ BEGIN
 
         IF (GETDATE() > @FechaPrevista)
         BEGIN
-            INSERT INTO Sanciones (ID_Prestamo, Tipo, Monto)
-            VALUES (@ID_Prestamo, 'Devolucion Tarde', 250.50);
-            
             PRINT 'Se ha generado una sancion por devolucion tardia.';
         END
 
